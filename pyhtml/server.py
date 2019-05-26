@@ -98,7 +98,7 @@ class API(web.Application):
     async def host(self):  # Start the connection to the DB and then start the Kyoukai server
         await self.bot.db.connect()
         await self.connect()
-        # asyncio.ensure_future(eval.repl(self))
+         asyncio.ensure_future(eval.repl(self))
 
         runner = web.AppRunner(self)
         await runner.setup()
