@@ -126,7 +126,7 @@ class Bot(commands.AutoShardedBot):
         for cog in icogs:
             self.add_cog(cog)
 
-        # self.loop.create_task(self.start_serv())
+         self.loop.create_task(self.start_serv())
         self.loop.create_task(self.httpserver.host())
 
         init_dd(self._auth[3], self._auth[4])
@@ -156,7 +156,7 @@ class Bot(commands.AutoShardedBot):
                         hooks = await ctx.guild.webhooks()
                         hook = discord.utils.get(hooks, name=char)
                         if hook is None:
-                            #await ctx.send(await _(ctx, "Webhook missing!"))
+                            await ctx.send(await _(ctx, "Webhook missing!"))
                             del self.in_character[ctx.guild.id][ctx.author.id]
                             return
                         content = msg.content
@@ -280,7 +280,7 @@ class Bot(commands.AutoShardedBot):
 
     @staticmethod
     def get_ram():
-        """Get the bot's RAM usage info."""
+        """Get the bot's RAM usage information."""
         mem = psutil.virtual_memory()
         return f"{mem.used / 0x40_000_000:.2f}/{mem.total / 0x40_000_000:.2f}GB ({mem.percent}%)"
 
